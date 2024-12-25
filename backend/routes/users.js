@@ -10,6 +10,6 @@ const {
 const { newUserValidation } = require("../validation/userValidation");
 
 router.route("/").get(getAllUsers).post(newUserValidation, addNewUser);
-router.route("/:id").put(editAnUser);
+router.route("/:id").put(newUserValidation, editAnUser);
 
 module.exports = router;

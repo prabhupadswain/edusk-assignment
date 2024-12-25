@@ -2,7 +2,8 @@ const { body, validationResult } = require("express-validator");
 const User = require("../models/User");
 
 // Check if email already exists or not
-const checkEmailNotInUSe = async (emailToCheck) => {
+// Custom Validator for unique email check
+const checkEmailNotInUse = async (emailToCheck) => {
   const [data] = await User.checkEmailExistsOrNot(emailToCheck);
 
   if (data[0].count > 0) throw new Error("E-Mail already in use");
@@ -21,12 +22,14 @@ exports.newUserValidation = [
     .notEmpty()
     .isEmail()
     .withMessage("Valid Email is required")
-    .custom(checkEmailNotInUSe),
+    .custom(checkEmailNotInUse),
   (req, res, next) => {
     const errors = validationResult(req);
-    console.log(req.body);
+    // console.log(req.body);
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
+      return res
+        .status(422)
+        .json({ msg: `Bad Request`, errors: errors.array() });
     } else next();
   },
 ];

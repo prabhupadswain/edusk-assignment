@@ -3,9 +3,11 @@ const app = express();
 
 const dotenv = require("dotenv");
 const cors = require("cors");
-const colors = require("colors");
 
+// Import Middlewares
 const logger = require("./middlewares/logger.js");
+const { errorHandler, notFound } = require("./middlewares/errorHandler.js");
+
 // const connectDB = require("./config/db.js");
 
 // Import Routes
@@ -30,16 +32,9 @@ app.use(logger);
 //Define Routes
 app.use("/api/users", users);
 
-// Global Error Handler
-app.use((err, req, res, next) => {
-  console.error(`Error Name: ${err.name}`.bgRed);
-  console.error(`Error Code: ${err.code}`.bgRed);
-  console.error(`Error Stack: ${err.stack}`.red);
-
-  res.status(500).json({
-    message: "Internal Server Error",
-  });
-});
+//Error Handler Middleware- Page Not Found/Not Found/Server Error
+app.use(notFound);
+app.use(errorHandler);
 
 // Set PORT
 const PORT = process.env.PORT || 5000;
