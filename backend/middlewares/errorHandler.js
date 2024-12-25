@@ -10,12 +10,13 @@ exports.notFound = (req, res, next) => {
 };
 
 // Internal Server Error Handler
+// 5xx error codes - 500 (is used to be precise)
 exports.errorHandler = (err, req, res, next) => {
   console.error(`Error Message: ${err.message}`.bgRed.underline);
   console.error(`Error Code: ${err.code}`.bgRed.underline);
   console.error(`Error Stack: ${err.stack}`.red);
 
   res.status(err.status || 500).json({
-    msg: err.message,
+    msg: "Internal Server Error",
   });
 };

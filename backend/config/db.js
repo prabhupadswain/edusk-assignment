@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const mysql = require("mysql2");
 
+// Create pool of SQL connection
 const pool = mysql
   .createPool({
     host: process.env.DB_HOST,
@@ -11,32 +12,29 @@ const pool = mysql
   })
   .promise();
 
-// connection.connect((error) => {
-//   if (error) {
-//     console.error("Error connecting to MySQL database:", error);
-//   } else {
-//     console.log("Connected to MySQL database!");
-//   }
-// });
-
 // Test Database Connection Method
 const connect = async () => {
   try {
+    // Check connection established or not by running random test query
     const [rows] = await pool.query(`SELECT 1 + 1 AS solution`);
+
+    // If successful, output to console
     if (rows[0].solution)
-      console.log(`Connected to MySQL Database successfully!`);
+      console.log(`Connected to MySQL Database successfully!`.cyan.underline);
   } catch (error) {
     // console.log(error);
-    console.error(`Error Name: ${error.name}`);
-    console.error(`Error Code: ${error.code}`);
-    console.error(`Error Stack: ${error.stack}`);
+    console.error(`Error Name: ${error.name}`.bgRed);
+    console.error(`Error Code: ${error.code}`.bgRed.underline);
+    console.error(`Error Stack: ${error.stack}`.red);
   }
 };
 
-// Invoke MySql Connection Method
+// Invoke MySql Connection Method to connect to DB
 connect();
 
 module.exports = pool;
+
+// <---- BELOW LOGIC NOT REQUIRED ANYMORE ----->
 
 // connection.connect((error) => {
 //   if (error) {
