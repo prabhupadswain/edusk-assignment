@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "username": "Ram",
+    "age": 24,
+    "email": "ram@gmail.com"
+  },
+  {
+    "id": 2,
+    "username": "Shyam",
+    "age": 45,
+    "email": "shyam@rmail.com"
+  },
+  {
+    "id": 3,
+    "username": "Neha",
+    "age": 32,
+    "email": "neha@ymail.com"
+  },
+  {
+    "id": 4,
+    "username": "Tina",
+    "age": 45,
+    "email": "tina@msn.com"
+  }
+]
