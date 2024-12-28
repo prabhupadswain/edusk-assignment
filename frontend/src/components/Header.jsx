@@ -13,7 +13,7 @@ import {
   MDBNavbarItem,
 } from "mdb-react-ui-kit";
 
-const Header = ({ isActive }) => {
+const Header = () => {
   const [openNav, setOpenNav] = useState(false);
 
   const linkClass = ({ isActive }) => {
