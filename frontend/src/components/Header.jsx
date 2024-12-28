@@ -23,7 +23,7 @@ const Header = () => {
     //   </h1>
     // </header>
     <header>
-      <MDBNavbar expand="lg" light bgColor="light">
+      <MDBNavbar expand="lg" dark bgColor="primary">
         <MDBContainer>
           <MDBNavbarBrand href="#">User Profile Manager</MDBNavbarBrand>
           <MDBNavbarToggler
@@ -43,7 +43,7 @@ const Header = () => {
           </MDBCollapse>
         </MDBContainer>
       </MDBNavbar>
-      <h1 className="p-3 text-center bg-light">User Profile Manager</h1>
+      <h1 className="p-3 text-center bg-secondary">User Profile Manager</h1>
     </header>
   );
 };

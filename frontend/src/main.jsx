@@ -9,13 +9,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // App Component
 import App from "./App.jsx";
 
-// import {
-//   createBrowserRouter,
-//   createRoutesFromElements,
-//   Route,
-//   RouterProvider,
-// } from "react-router-dom";
-
 // // Import Pages
 // import Home from "./pages/Home";
 // import CreateUser from "./pages/CreateUser";
