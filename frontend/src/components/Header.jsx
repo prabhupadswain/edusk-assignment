@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import {
   MDBContainer,
@@ -13,9 +13,12 @@ import {
   MDBNavbarItem,
 } from "mdb-react-ui-kit";
 
-const Header = () => {
+const Header = ({ isActive }) => {
   const [openNav, setOpenNav] = useState(false);
 
+  const linkClass = ({ isActive }) => {
+    console.log(isActive);
+  };
   return (
     // <header>
     //   <h1 className='display-2 mb-5' style={{ textAlign: 'center' }}>
@@ -23,9 +26,11 @@ const Header = () => {
     //   </h1>
     // </header>
     <header>
-      <MDBNavbar expand="lg" dark bgColor="primary">
+      <MDBNavbar expand="lg" light bgColor="light">
         <MDBContainer>
-          <MDBNavbarBrand href="#">User Profile Manager</MDBNavbarBrand>
+          <MDBNavbarBrand>
+            <NavLink to="/">User Profile Manager</NavLink>
+          </MDBNavbarBrand>
           <MDBNavbarToggler
             type="button"
             aria-expanded="false"
@@ -36,9 +41,21 @@ const Header = () => {
           </MDBNavbarToggler>
           <MDBCollapse open={openNav} navbar>
             <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
-              <MDBNavbarLink href="#">User Profiles</MDBNavbarLink>
-              <MDBNavbarLink href="#">Add User</MDBNavbarLink>
-              <MDBNavbarLink href="#">Edit User</MDBNavbarLink>
+              <MDBNavbarItem>
+                <NavLink to="/display-user" className={linkClass}>
+                  User Profiles
+                </NavLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <NavLink to="/add-user" className={linkClass}>
+                  Add User
+                </NavLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <NavLink to="/edit-user" className={linkClass}>
+                  Edit User
+                </NavLink>
+              </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>
