@@ -1,10 +1,11 @@
-import React from "react";
+import EditUserForm from "../components/User/EditUserForm";
 
 const EditUserPage = () => {
   return (
     <main>
+      <h3>Edit User Page</h3>
       <section>
-        <h3>Edit User Page</h3>
+        <EditUserForm />
       </section>
     </main>
   );

@@ -1,12 +1,15 @@
-import React from "react";
-import UserForm from "../components/UserForm";
+import { MDBContainer } from "mdb-react-ui-kit";
+import AddUserForm from "../components/User/AddUserForm";
 
 const AddUserPage = () => {
   return (
     <main>
-      <section>
+      <MDBContainer>
         <h3>Add User Page</h3>
-      </section>
+        <section>
+          <AddUserForm />
+        </section>
+      </MDBContainer>
     </main>
   );
 };

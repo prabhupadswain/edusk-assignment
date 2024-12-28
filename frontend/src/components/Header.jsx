@@ -16,8 +16,8 @@ import {
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
 
-  const linkClass = ({ isActive }) => {
-    console.log(isActive);
+  const linkClass = () => {
+    // console.log(isActive);
   };
   return (
     // <header>
@@ -28,9 +28,12 @@ const Header = () => {
     <header>
       <MDBNavbar expand="lg" light bgColor="light">
         <MDBContainer>
-          <MDBNavbarBrand>
-            <NavLink to="/">User Profile Manager</NavLink>
-          </MDBNavbarBrand>
+          <NavLink to="/">
+            <MDBIcon fas icon="university" size="lg" />
+          </NavLink>
+          {/* <MDBNavbarBrand>
+            
+          </MDBNavbarBrand> */}
           <MDBNavbarToggler
             type="button"
             aria-expanded="false"
