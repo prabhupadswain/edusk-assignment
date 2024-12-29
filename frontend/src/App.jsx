@@ -18,6 +18,9 @@ import AddUserPage from "./pages/AddUserPage";
 import DisplayUsersPage from "./pages/DisplayUsersPage";
 import EditUserPage from "./pages/EditUserPage";
 
+// Import Context
+import { UserProvider } from "./store/user/UserState";
+
 // Create router
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,16 +36,18 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-      <RouterProvider router={router}></RouterProvider>
-      {/* <div>
+      <UserProvider>
+        <RouterProvider router={router}></RouterProvider>
+        {/* <div>
         {/* <Header />
         <Hero /> */}
-      {/* <UsersList /> */}
-      {/* <h2 className="mb-4 text-center">User Profile Manager App</h2> */}
-      {/* <Container className="my-2">
+        {/* <UsersList /> */}
+        {/* <h2 className="mb-4 text-center">User Profile Manager App</h2> */}
+        {/* <Container className="my-2">
           <Outlet />
         </Container> 
       </div> */}
+      </UserProvider>
     </>
   );
 }
