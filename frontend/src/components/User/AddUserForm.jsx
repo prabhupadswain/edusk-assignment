@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { MDBCol, MDBInput, MDBRow } from "mdb-react-ui-kit";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -24,6 +24,7 @@ const AddUserForm = () => {
     setAge(event.target.value);
   };
 
+  // COntext
   const { addUser } = useContext(UserContext);
 
   const sumbitHandler = (event) => {

@@ -33,7 +33,7 @@ export const UserProvider = ({ children }) => {
     } catch (error) {
       dispatch({
         type: "USER_ERROR",
-        payload: error.res.data.message,
+        payload: error.res.data.msg,
       });
     }
   }
@@ -54,7 +54,7 @@ export const UserProvider = ({ children }) => {
     } catch (error) {
       dispatch({
         type: "USER_ERROR",
-        payload: error.res.data.message,
+        payload: error.res.data.msg,
       });
     }
   }
@@ -67,17 +67,18 @@ export const UserProvider = ({ children }) => {
       },
     };
     try {
-      const res = await axios.put(`${baseURL}/api/users${id}`, user, config);
-      console.log(res);
-      // dispatch({
-      //   type: 'ADD_USER',
-      //   payload: res.data.data,
-      // });
+      const res = await axios.put(`${baseURL}/api/users/${id}`, user, config);
+      if (res.data.success) {
+        dispatch({
+          type: "EDIT_USER",
+          payload: { id, user },
+        });
+      }
     } catch (error) {
-      // dispatch({
-      //   type: 'USER_ERROR',
-      //   payload: error.res.data.message,
-      // });
+      dispatch({
+        type: "USER_ERROR",
+        payload: error.res.data.msg,
+      });
     }
   }
 

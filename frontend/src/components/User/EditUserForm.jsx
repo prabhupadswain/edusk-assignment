@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { MDBInput, MDBRow, MDBCol } from "mdb-react-ui-kit";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+
+import { UserContext } from "../../store/user/UserState";
 
 const EditUserForm = () => {
   const [user, setUser] = useState({
@@ -9,19 +11,39 @@ const EditUserForm = () => {
     age: "",
   });
 
+  // 1. Navigate and
+  // 2. Retrieve User ID from URL Param
+  // console.log(useParams());
+
+  const navigate = useNavigate();
+  const { id } = useParams();
+
   const changeHandler = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
+  // Context
+  const { editUser } = useContext(UserContext);
+
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(user);
+    // console.log(`User ID:${id}`);
+    // console.log(user);
+
+    const newUserToUpdate = {
+      ...user,
+      age: Number(user.age),
+    };
+
+    editUser(id, newUserToUpdate);
 
     setUser({
       username: "",
       email: "",
       age: "",
     });
+
+    navigate("/");
   };
 
   return (
@@ -30,7 +52,7 @@ const EditUserForm = () => {
         className="mb-4"
         type="text"
         id="uname"
-        label="Enter username"
+        label="Enter username. New username can be same or different from old one. Not blank"
         required
         name="username"
         value={user.username}
@@ -42,7 +64,7 @@ const EditUserForm = () => {
             className="mb-4"
             type="email"
             id="email"
-            label="Please, enter an email different from the previous one"
+            label="New email has to be different from old one, valid & not blank"
             required
             name="email"
             value={user.email}
