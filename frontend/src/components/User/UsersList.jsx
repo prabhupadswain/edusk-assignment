@@ -13,8 +13,8 @@ const UsersList = () => {
     getUsers();
   }, []);
 
-  const listUsers = users.map((singleUser) => (
-    <MDBCol key={singleUser.id} md="6">
+  const listUsers = users.map((singleUser, index) => (
+    <MDBCol key={singleUser.id ? singleUser.id : index} md="6">
       <User data={singleUser} />
     </MDBCol>
   ));

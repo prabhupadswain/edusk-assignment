@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { MDBCol, MDBInput, MDBRow } from "mdb-react-ui-kit";
+import { useNavigate, Link } from "react-router-dom";
+
+import { UserContext } from "../../store/user/UserState";
 
 const AddUserForm = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
 
+  // Navigate back to display user page after post
+  const navigate = useNavigate();
+
+  // Input Change Handler for each input for 3 inputs)
   const inputUserNameHandler = (event) => {
     setUserName(event.target.value);
   };
@@ -17,19 +24,22 @@ const AddUserForm = () => {
     setAge(event.target.value);
   };
 
+  const { addUser } = useContext(UserContext);
+
   const sumbitHandler = (event) => {
     event.preventDefault();
 
     const newUser = {
-      userName,
-      email,
-      age,
+      username: userName,
+      email: email,
+      age: Number(age),
     };
 
-    console.log(newUser);
+    addUser(newUser);
     setUserName("");
     setEmail("");
     setAge("");
+    navigate("/display-user");
   };
 
   return (
@@ -77,6 +87,11 @@ const AddUserForm = () => {
             <button type="submit" className="btn btn-success">
               ADD USER
             </button>
+          </MDBCol>
+          <MDBCol>
+            <Link to="/" className="btn btn-info">
+              GO BACK TO HOME PAGE
+            </Link>
           </MDBCol>
         </MDBRow>
       </form>
