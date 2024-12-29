@@ -17,10 +17,6 @@ const AddUserForm = () => {
     setAge(event.target.value);
   };
 
-  const resetHandler = () => {
-    console.log("RESET");
-  };
-
   const sumbitHandler = (event) => {
     event.preventDefault();
 
@@ -53,7 +49,7 @@ const AddUserForm = () => {
           </MDBCol>
         </MDBRow>
 
-        <MDBRow className="mb-4">
+        <MDBRow>
           <MDBCol>
             <MDBInput
               className="mb-4"
@@ -80,13 +76,6 @@ const AddUserForm = () => {
           <MDBCol>
             <button type="submit" className="btn btn-success">
               ADD USER
-            </button>
-            <button
-              type="reset"
-              className="btn btn-info"
-              onClick={resetHandler}
-            >
-              RESET FORM
             </button>
           </MDBCol>
         </MDBRow>

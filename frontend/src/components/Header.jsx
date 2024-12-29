@@ -54,11 +54,6 @@ const Header = () => {
                   Add User
                 </NavLink>
               </MDBNavbarItem>
-              <MDBNavbarItem>
-                <NavLink to="/edit-user" className={linkClass}>
-                  Edit User
-                </NavLink>
-              </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>

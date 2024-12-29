@@ -8,6 +8,8 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 
+import { Link } from "react-router-dom";
+
 const User = ({ data }) => {
   return (
     <MDBCard className="mb-3">
@@ -20,13 +22,9 @@ const User = ({ data }) => {
           Hello, I am {data.age} year old freelance software engineer. Contact
           me over email for services.
         </MDBCardText>
-        <MDBCardLink href={`user/${data.id}`}>
-          <MDBIcon fas icon="edit" /> Edit
-        </MDBCardLink>
-        <MDBCardLink href={`user/${data.id}`}>
-          {" "}
-          <MDBIcon fas icon="trash" /> Delete
-        </MDBCardLink>
+        <Link to={`/edit-user/${data.id}`}>
+          <MDBIcon fas icon="edit" /> &nbsp;Edit
+        </Link>
       </MDBCardBody>
     </MDBCard>
   );
